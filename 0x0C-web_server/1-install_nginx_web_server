@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
-# Install nginx web server and basic setup
-sudo apt-get update -y
-sudo apt-get install nginx -y
-# Adjust the firewall
-# sudo ufw enable -y
-sudo ufw allow 'OpenSSH'
+# Installing Nginx web server in the web-01 server
+sudo apt-get update
+sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
-# Take backup of the original index
-sudo cp /var/www/school/index.html /var/www/school/bkup_index.html
-# Changing to sudo for update the file
-sudo su
-echo "Hello World!" > /var/www/school/index.html
 sudo service nginx start
+sudo echo "Hello World!" | sudo tee /var/www/html/index.html
